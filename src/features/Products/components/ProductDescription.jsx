@@ -6,11 +6,14 @@ ProductDescription.propTypes = {
     product: PropTypes.object.isRequired,
 };
 
-function ProductDescription({product = {}}) {
+function ProductDescription({ product = {} }) {
     const safeDescription = DOMPurify.sanitize(product.description)
+    console.log(safeDescription)
     return (
-        <Paper elevation={0} style={{ padding: "15px" }}> 
-            <div dangerouslySetInnerHTML={{ __html: safeDescription }}/>
+        <Paper elevation={0} style={{ padding: "15px" }}>
+            <div style={{ minWidth: '375px' }}>
+                <div dangerouslySetInnerHTML={{ __html: safeDescription }} />
+            </div>
         </Paper>
 
     );

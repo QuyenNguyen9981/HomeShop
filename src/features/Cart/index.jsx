@@ -22,20 +22,22 @@ CartFeature.propTypes = {};
 const useStyles = makeStyles((theme) => ({
   root: {},
   middle: {
-    maxWidth: '600px',
-    padding: theme.spacing(1.5),
+    width: '100%'
   },
   left: {
-    flex: 'wrap',
-    padding: theme.spacing(1.5),
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%',
   },
   right: {
-    position: 'relative',
-    maxWidth: '350px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '15px',
+
     minHeight: '200px',
     width: '100%',
     textAlign: 'center',
-    padding: theme.spacing(1.5),
+
     borderLeft: `1px solid ${theme.palette.grey[300]}`,
   },
   empty: {
@@ -64,25 +66,30 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'line-through',
   },
   button: {
-    position: 'absolute',
-    maxWidth: '325px',
     width: '100%',
     bottom: '8px',
-    right: '8px',
+    right: 0,
+
   },
   local: {
-    padding: theme.spacing(1.5),
+    padding: theme.spacing(1),
     border: `2px solid ${theme.palette.grey[300]}`,
+    // minHeight
+
+
   },
   total: {
     color: '#b2102f',
     fontSize: theme.typography.h6.fontSize,
     fontWeight: 'bold',
     borderTop: `2px solid ${theme.palette.grey[300]}`,
+
   },
   estimatePrice: {
     padding: theme.spacing(1.5),
+
   },
+
 }));
 
 function CartFeature(props) {
@@ -134,12 +141,12 @@ function CartFeature(props) {
           <h3>Giỏ hàng ({numberItemInCart} sản phẩm) </h3>
         </Box>
         <Paper elevation={0}>
-          <Grid container>
+          <Grid container spacing={1}>
             {/* left */}
-            <Grid item className={classes.left}>
+            <Grid item className={classes.left} lg={2}>
               {infoProduct.length > 0 &&
                 infoProduct.map((product, idx) => (
-                  <div key={product.id} product={product}>
+                  <div key={product.id} product={product} >
                     <img src={thumbnailUrl} name="product" width="200px" />
                   </div>
                 ))}
@@ -162,8 +169,8 @@ function CartFeature(props) {
               )}
             </Grid>
 
-            <Grid>
-              <Box className={classes.middle}>
+            <Grid lg={7} className={classes.middle}>
+              <Box >
                 <Typography component="h1" variant="h4" className={classes.name}>
                   {name}
                 </Typography>
@@ -195,7 +202,7 @@ function CartFeature(props) {
 
             {/* right */}
             {numberItemInCart > 0 && (
-              <Grid item className={classes.right}>
+              <Grid item className={classes.right} lg={3}>
                 <Box className={classes.local}>
                   Địa chỉ giao hàng: 118/16/30 Huỳnh Thiện Lộc,Phường Hòa Thạnh, Quận Tân Phú, HCM
                 </Box>

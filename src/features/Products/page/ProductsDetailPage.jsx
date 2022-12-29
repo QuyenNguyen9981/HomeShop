@@ -22,9 +22,11 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(3)
   },
   left: {
-    width: '400px',
+    textAlign: 'center',
+    width: '100%',
     borderRight: `1px solid ${theme.palette.grey[300]}`,
     padding: theme.spacing(1.5),
+
   },
   right: {
     flex: '1 1 0',
@@ -64,15 +66,15 @@ function ProductsDetailPage(props) {
   }
 
   return (
-    <Box className={classes.root}>
+    <Box className={classes.root} >
       <Container>
         <Paper elevation={0}>
           <Grid container>
-            <Grid item className={classes.left}>
+            <Grid item className={classes.left} lg={4}>
               <ProductThumbnail product={product} />
             </Grid>
 
-            <Grid item className={classes.right}>
+            <Grid item className={classes.right} lg={8}>
               <ProductInfo product={product} />
               <AddToCartForm onSubmit={handleAddToCartSubmit} />
             </Grid>

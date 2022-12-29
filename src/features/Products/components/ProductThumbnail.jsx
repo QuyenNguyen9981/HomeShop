@@ -10,7 +10,7 @@ function ProductThumbnail({ product }) {
 
   return (
     <Box>
-      <img src={thumbnailUrl} alt={product.name} width="100%" />
+      <img src={thumbnailUrl} alt={product.name} width="80%" />
     </Box>
   );
 }
